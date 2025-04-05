@@ -1,7 +1,8 @@
 # GitHubAGL  
 # Application de Reservation d'Hotel  
 
-## Description  L'objectif de ce projet est de développer une application bureau  permettant aux utilisateurs(clients) de rechercher,consulter et  réserver des chambres d'hôtel en ligne. Le projet couvre l'ensemble du processus de réservation, incluant la consultation des disponibilités, la sélection des options(date de reservation,type de chambre etc..), et enfin le paiement .. Elle inclut des fonctionnalites telles que :  
+## Description 
+-L'objectif de ce projet est de développer une application bureau  permettant aux utilisateurs(clients) de rechercher,consulter et  réserver des chambres d'hôtel en ligne. Le projet couvre l'ensemble du processus de réservation, incluant la consultation des disponibilités, la sélection des options(date de reservation,type de chambre etc..), et enfin le paiement .. Elle inclut des fonctionnalites telles que :  
 - Creation de comptes utilisateurs  
 - Connexion securisee  
 - Reservation de chambres en temps reel
