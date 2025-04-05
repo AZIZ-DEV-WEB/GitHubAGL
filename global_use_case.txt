@@ -1,0 +1,30 @@
+@startuml
+rectangle "Systeme de reservation hotel" {
+
+    actor Administrateur
+    actor Client
+
+    usecase "S authentifier" as Auth
+    usecase "Consulter les reservations" as CR
+    usecase "Gerer les clients" as GC
+    usecase "Gerer les chambres" as GCH
+    usecase "Reserver" as Res
+    usecase "Payer" as Pay
+    usecase "Consulter mes reservations" as CMR
+    usecase "Annuler reservation" as AR
+    usecase "Service Clients" as SC
+
+    Administrateur -- Auth
+    Auth <.. CR : <<extends>>
+    Auth <.. GC : <<extends>>
+    Auth <.. GCH : <<extends>>
+
+    Client -- Res
+    Client -- CMR
+    Client -- SC
+
+    Res ..> Pay : <<include>>
+    CMR <.. AR : <<extends>>
+}
+
+@enduml

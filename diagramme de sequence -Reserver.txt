@@ -1,0 +1,53 @@
+@startuml
+actor "Utilisateur" as User
+participant "Systeme" as System
+
+User -> System : Lance une reservation (dates, type de chambre)
+activate System
+
+alt Cas 1 : Chambre disponible
+    System -> System : Verifie la disponibilite
+    activate System
+    System --> User : Chambre disponible
+    deactivate System
+
+    alt Cas 1.1 : Dates valides
+        System -> System : Valide les dates (depart > arrivee)
+        activate System
+        System --> User : Dates acceptees
+        deactivate System
+
+        alt Cas 1.1.1 : Utilisateur authentifie
+            System -> System : Verifie l authentification
+            activate System
+            System --> User : Session valide
+            deactivate System
+
+            alt Cas 1.1.1.1 : Paiement reussi
+                System -> System : Traite le paiement
+                activate System
+                System --> User : Paiement accepte
+                deactivate System
+
+                System -> System : Enregistre la reservation
+                activate System
+                System --> User : Confirmation + email
+                deactivate System
+            else Cas 1.1.1.2 : Paiement refuse
+                System --> User : ❌ Paiement echoue
+            end
+
+        else Cas 1.1.2 : Utilisateur non authentifie
+            System --> User : ❌ Connectez-vous pour reserver
+        end
+
+    else Cas 1.2 : Dates invalides
+        System --> User : ❌ Veuillez corriger les dates
+    end
+
+else Cas 2 : Chambre non disponible
+    System --> User : ❌ Aucune chambre disponible
+end
+
+deactivate System
+@enduml

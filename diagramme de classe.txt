@@ -1,0 +1,85 @@
+@startuml
+
+'#######################
+' Classes principales
+'#######################
+
+class Utilisateur {
+  +id : Integer
+  +nom : String
+  +email : String
+  +motDePasse : String
+  +seConnecter()
+  +seDeconnecter()
+}
+
+class Client {
+  +telephone : String
+  +historiqueReservations()
+}
+
+class Administrateur {
+  +ajouterChambre()
+  +supprimerChambre()
+  +modifierDetailsClient()
+  +annulerReservation()
+  +genererRapports()
+}
+
+class Chambre {
+  +numero : Integer
+  +type : String
+  +prix : Float
+  +disponible : Boolean
+  +verifierDisponibilite()
+  +modifierDetails()
+}
+
+class Reservation {
+  +idReservation : Integer
+  +dateDebut : Date
+  +dateFin : Date
+  +statut : String
+  +creerReservation()
+  +annulerReservation()
+  +validerReservation()
+}
+
+class Paiement {
+  +idPaiement : Integer
+  +montant : Float
+  +methode : String
+  +statut : String
+  +traiterPaiement()
+}
+
+'#######################
+' Relations
+'#######################
+
+Utilisateur <|-- Client
+Utilisateur <|-- Administrateur
+
+Client "1" --> "0..*" Reservation : effectue
+Reservation "1" --> "1" Chambre : concerne
+Reservation "1" --> "1" Paiement : inclut
+
+Administrateur "1" --> "1..*" Chambre : gere
+Administrateur "1" --> "0..*" Client : gere
+Administrateur "1" --> "0..*" Reservation : gere
+
+'#######################
+' Interfaces supplémentaires
+'#######################
+
+interface ServiceClient {
+  +gererReclamation()
+}
+
+class Conseiller {
+  +modifierReservation()
+}
+
+ServiceClient <|.. Conseiller
+
+@enduml

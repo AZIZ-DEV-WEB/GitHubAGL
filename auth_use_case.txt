@@ -1,0 +1,20 @@
+@startuml
+
+actor "Utilisateur" as User
+
+rectangle Authentification {
+  usecase "S'authentifier" as UC1
+  usecase "Valider identifiants" as UC2 <<include>>
+  usecase "Recuperer mot de passe" as UC3 <<extend>>
+  usecase "Verrouiller compte" as UC4 <<extend>>
+
+  UC1 .> UC2 : include
+  UC3 .> UC1 : extend
+  UC4 .> UC1 : extend
+}
+
+User --> UC1
+User --> UC3
+User --> UC4
+
+@enduml

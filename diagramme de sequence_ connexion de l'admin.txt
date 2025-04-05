@@ -1,0 +1,28 @@
+@startuml
+actor Administrateur
+participant "Interface Admin" as IA
+participant "Systeme" as S
+participant "Base de donnees" as BD
+
+Administrateur -> IA : Se connecte
+IA -> S : Verifie les identifiants
+S -> BD : Verifie les identifiants
+alt Mot de passe incorrect
+    BD --> S : Erreur de mot de passe
+    S --> IA : Affiche message d erreur
+    IA --> Administrateur : Demande de se reconnecter
+    Administrateur -> IA : Refaire la connexion
+else Identifiants corrects
+    BD --> S : Resultat de la verification
+    S --> IA : Resultat de la connexion
+    IA --> Administrateur : Confirme la connexion
+end
+
+Administrateur -> IA : Soumettre les informations du client
+IA -> S : Ajouter un client
+S -> BD : Ajouter le client à la base de donnees
+BD --> S : Confirme l ajout
+S --> IA : Confirme l ajout
+IA --> Administrateur : Confirme l ajout du client
+
+@enduml
