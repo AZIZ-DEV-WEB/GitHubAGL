@@ -1,6 +1,7 @@
 # GitHubAGL  
 # Application de Reservation d'Hotel  
 
+<<<<<<< HEAD
 ## Description  
 - Description L'objectif de ce projet est de développer une application bureau permettant aux utilisateurs(clients) de rechercher,consulter et réserver des chambres d'hôtel en ligne.
 - Le projet couvre l'ensemble du processus de réservation, incluant la consultation des disponibilités, la sélection des options(date de reservation,type de chambre etc..), et enfin le paiement ..
@@ -10,6 +11,14 @@
 -Reservation de chambres en temps reel
 -Paiment en ligne
 -Gestion des informations clients 
+=======
+## Description  L'objectif de ce projet est de développer une application bureau  permettant aux utilisateurs(clients) de rechercher,consulter et  réserver des chambres d'hôtel en ligne. Le projet couvre l'ensemble du processus de réservation, incluant la consultation des disponibilités, la sélection des options(date de reservation,type de chambre etc..), et enfin le paiement .. Elle inclut des fonctionnalites telles que :  
+- Creation de comptes utilisateurs  
+- Connexion securisee  
+- Reservation de chambres en temps reel
+- Paiment en ligne
+- Gestion des informations clients  
+>>>>>>> 2576ff31449d85ed858de12030dcd5fba4281b22
 
 ## Cas d'Utilisation  
 
@@ -244,6 +253,7 @@ class Reservation {
   +validerReservation()
 }
 
+<<<<<<< HEAD
 class Paiement {
   +idPaiement : Integer
   +montant : Float
@@ -281,4 +291,8 @@ class Conseiller {
 
 ServiceClient <|.. Conseiller
 
+=======
+Client --> Reservation  
+Reservation --> Chambre  
+>>>>>>> 2576ff31449d85ed858de12030dcd5fba4281b22
 @enduml
