@@ -70,21 +70,19 @@
 ```plantuml
 @startuml
 class Client {
-  +id : Integer
-  +nom : String
-  +email : String
-  +reserverChambre()
+   id
+  nom
+  email
+  
 }
 
 class Chambre {
-  +numero : Integer
-  +type : String
-  +verifierDisponibilite()
+numero
+  type
 }
 
 class Reservation {
-  +idReservation : Integer
-  +confirmerPaiement()
+  idReservation
 }
 
 Client --> Reservation  
